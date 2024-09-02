@@ -84,5 +84,4 @@ ANTLR Parser Generator  Version 4.13.2
 
 If you see the above output, then the installation was successful.
 
-[A first example is provided in the guide used to install antlr4.](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md#a-first-example) 
-Note that the example states the use of ^Z to end the input, but this initialy did not work for me. What did work was to use `Ctrl + Z` and then `Enter` to end the input.
+[A first example for using antlr is provided in the guide used to install antlr4.](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md#a-first-example)
