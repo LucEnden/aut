@@ -85,3 +85,8 @@ ANTLR Parser Generator  Version 4.13.2
 If you see the above output, then the installation was successful.
 
 [A first example for using antlr is provided in the guide used to install antlr4.](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md#a-first-example)
+
+---
+
+## Useful Links
+- [Grammars Documentation](https://github.com/antlr/antlr4/blob/master/doc/grammars.md)
