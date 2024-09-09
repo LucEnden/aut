@@ -1,0 +1,17 @@
+OPENBRACKET=1
+CLOSEBRACKET=2
+MLT=3
+DIV=4
+ADD=5
+SUB=6
+EQU=7
+INT=8
+REAL=9
+WS=10
+'('=1
+')'=2
+'*'=3
+'/'=4
+'+'=5
+'-'=6
+'='=7
