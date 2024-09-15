@@ -1,5 +1,4 @@
-// Generated from ./src/Arithmetic/Arithmetic.g4 by ANTLR 4.13.2
-package Arithmetic;
+// Generated from d:/Users/luc/Documents/GitHub/aut/src/Arithmetic/Arithmetic.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -9,16 +8,16 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class ArithmeticParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		OPENBRACKET=1, CLOSEBRACKET=2, MLT=3, DIV=4, ADD=5, SUB=6, EQU=7, REAL=8, 
-		INT=9, WS=10;
+		OPENBRACKET=1, CLOSEBRACKET=2, MLT=3, DIV=4, ADD=5, SUB=6, EQU=7, INT=8, 
+		REAL=9, WS=10;
 	public static final int
 		RULE_infix_expr = 0, RULE_infix = 1, RULE_const = 2;
 	private static String[] makeRuleNames() {
@@ -37,7 +36,7 @@ public class ArithmeticParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "OPENBRACKET", "CLOSEBRACKET", "MLT", "DIV", "ADD", "SUB", "EQU", 
-			"REAL", "INT", "WS"
+			"INT", "REAL", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -118,11 +117,6 @@ public class ArithmeticParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).exitInfix_expr(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ArithmeticVisitor ) return ((ArithmeticVisitor<? extends T>)visitor).visitInfix_expr(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Infix_exprContext infix_expr() throws RecognitionException {
@@ -188,11 +182,6 @@ public class ArithmeticParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).exitInfix(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ArithmeticVisitor ) return ((ArithmeticVisitor<? extends T>)visitor).visitInfix(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final InfixContext infix() throws RecognitionException {
@@ -251,8 +240,8 @@ public class ArithmeticParser extends Parser {
 				}
 				}
 				break;
-			case REAL:
 			case INT:
+			case REAL:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(18);
@@ -290,11 +279,6 @@ public class ArithmeticParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).exitConst(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ArithmeticVisitor ) return ((ArithmeticVisitor<? extends T>)visitor).visitConst(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ConstContext const_() throws RecognitionException {
@@ -306,7 +290,7 @@ public class ArithmeticParser extends Parser {
 			{
 			setState(21);
 			_la = _input.LA(1);
-			if ( !(_la==REAL || _la==INT) ) {
+			if ( !(_la==INT || _la==REAL) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {

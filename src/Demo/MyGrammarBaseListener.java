@@ -60,18 +60,6 @@ public class MyGrammarBaseListener implements MyGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitName(MyGrammarParser.NameContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAge(MyGrammarParser.AgeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAge(MyGrammarParser.AgeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,0 +1,4 @@
+formula,should_be_valid
+4 * (1 + (2 - 1)) / 2 = 4,true
+4*(1+(2-1))/2=4,true
+4* ( 1+(2-1 )    ) / 2  =4,true

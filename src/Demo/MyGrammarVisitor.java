@@ -34,10 +34,4 @@ public interface MyGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitName(MyGrammarParser.NameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MyGrammarParser#age}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAge(MyGrammarParser.AgeContext ctx);
 }

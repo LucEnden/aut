@@ -1,5 +1,4 @@
-// Generated from ./src/Arithmetic/Arithmetic.g4 by ANTLR 4.13.2
-package Arithmetic;
+// Generated from d:/Users/luc/Documents/GitHub/aut/src/Arithmetic/Arithmetic.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

@@ -4,6 +4,6 @@
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
+        "d:\\Users\\luc\\Documents\\GitHub\\aut\\lib\\antlr-4.13.2-complete.jar"
     ]
 }

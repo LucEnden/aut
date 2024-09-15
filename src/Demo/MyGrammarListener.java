@@ -47,14 +47,4 @@ public interface MyGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitName(MyGrammarParser.NameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MyGrammarParser#age}.
-	 * @param ctx the parse tree
-	 */
-	void enterAge(MyGrammarParser.AgeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MyGrammarParser#age}.
-	 * @param ctx the parse tree
-	 */
-	void exitAge(MyGrammarParser.AgeContext ctx);
 }

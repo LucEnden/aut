@@ -20,8 +20,8 @@ DIV
 ADD
 SUB
 EQU
-INT
 REAL
+INT
 WS
 
 rule names:

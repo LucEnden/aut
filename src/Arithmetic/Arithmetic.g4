@@ -2,13 +2,14 @@ grammar Arithmetic;
 
 // 4 * (1 + (2 - 1)) / 2 = 4
 
-expr  : (infix)+ EQU const ;
-infix : OPENBRACKET (infix)+ CLOSEBRACKET
+infix_expr  : const (infix)+ EQU const;
+infix : (OPENBRACKET | CLOSEBRACKET)
     |   (MLT | DIV)
     |   (SUB | ADD)
     |   const
     ;
-const : INT | REAL ;
+// In infix arithmatic, a constant is considered a real or natural number
+const : (INT | REAL) ;
 
 // Tokens
 OPENBRACKET : '(' ;
@@ -18,9 +19,14 @@ DIV : '/' ;
 ADD : '+' ;
 SUB : '-' ;
 EQU : '=' ;
-INT : (SUB | )[0-9]+ ;
-REAL : (SUB | )INT.INT ;
-WS : ([ \t]+) -> skip ; // skip spaces, tabs
+REAL : INT.INT ;
+INT : SUB[0-9]+ | [0-9]+ ;
+WS : ([ \t\n]+) -> skip ; // TODO: fix the fact that 4 4 * 2 should not be an accaptable infix notated som
+
+
+
+
+
 
 // ====================================================================================
 

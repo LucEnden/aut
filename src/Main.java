@@ -5,6 +5,10 @@ import Demo.MyGrammarBaseListener;
 import Demo.MyGrammarLexer;
 import Demo.MyGrammarParser;
 
+// To investigate the contents of the ctx and other objects (in todo comments), im gonna use reflections
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 public class Main
 {
     public static void main(String[] args) throws Exception 
@@ -16,6 +20,8 @@ public class Main
 
 		// TODO: print the lexer's vocabulary and the actual list of tokens 
         System.out.println("lexer vocabulary: " + lexer.getVocabulary());
+        tokens.fill(); // fill the token stream
+        System.out.println("tokens: " + tokens.getTokens());
 		
         MyGrammarParser parser = new MyGrammarParser(tokens);
 
@@ -32,6 +38,15 @@ class MyListener extends MyGrammarBaseListener
 	{ 
 		// TODO: investigate contents of 'ctx'
 		System.err.println("enterMyStart()");
+
+        Field[] fields = ctx.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            System.out.println("field: " + field.getName());
+        }
+        Method[] methods = ctx.getClass().getDeclaredMethods();
+        for (Method method : methods) {
+            System.out.println("method: " + method.getName());
+        }
 	}
 	
 	@Override public void exitMyStart(MyGrammarParser.MyStartContext ctx) 
@@ -44,8 +59,12 @@ class MyListener extends MyGrammarBaseListener
 	{ 
 		System.err.println("terminal-node: '" + node.getText() + "'");
 		// TODO: print line+column, token's type, etc.
+        System.out.println("Line: " + node.getSymbol().getLine());
+        System.out.println("Column: " + node.getSymbol().getCharPositionInLine());
+        System.out.println("Token Type: " + node.getSymbol().getType());
 	}
 	// TODO: override other methods of 'MyGrammarBaseListener'
+    
 }
 
 // public class App {

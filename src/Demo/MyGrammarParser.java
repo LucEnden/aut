@@ -17,12 +17,12 @@ public class MyGrammarParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		GOODBYE=1, HELLO=2, NUMBER=3, ID=4, WS=5;
+		GOODBYE=1, HELLO=2, NUMBER=3, AGE=4, TELNUM=5, ID=6, WS=7;
 	public static final int
-		RULE_myStart = 0, RULE_hello = 1, RULE_goodbye = 2, RULE_name = 3, RULE_age = 4;
+		RULE_myStart = 0, RULE_hello = 1, RULE_goodbye = 2, RULE_name = 3;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"myStart", "hello", "goodbye", "name", "age"
+			"myStart", "hello", "goodbye", "name"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -35,7 +35,7 @@ public class MyGrammarParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "GOODBYE", "HELLO", "NUMBER", "ID", "WS"
+			null, "GOODBYE", "HELLO", "NUMBER", "AGE", "TELNUM", "ID", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -130,23 +130,23 @@ public class MyGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(12); 
+			setState(10); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
-				setState(12);
+				setState(10);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case HELLO:
 					{
-					setState(10);
+					setState(8);
 					hello();
 					}
 					break;
 				case GOODBYE:
 					{
-					setState(11);
+					setState(9);
 					goodbye();
 					}
 					break;
@@ -154,11 +154,11 @@ public class MyGrammarParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(14); 
+				setState(12); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==GOODBYE || _la==HELLO );
-			setState(16);
+			setState(14);
 			match(EOF);
 			}
 		}
@@ -179,9 +179,7 @@ public class MyGrammarParser extends Parser {
 		public NameContext name() {
 			return getRuleContext(NameContext.class,0);
 		}
-		public AgeContext age() {
-			return getRuleContext(AgeContext.class,0);
-		}
+		public TerminalNode AGE() { return getToken(MyGrammarParser.AGE, 0); }
 		public HelloContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -207,12 +205,12 @@ public class MyGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(18);
+			setState(16);
 			match(HELLO);
-			setState(19);
+			setState(17);
 			name();
-			setState(20);
-			age();
+			setState(18);
+			match(AGE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -254,7 +252,7 @@ public class MyGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(22);
+			setState(20);
 			match(GOODBYE);
 			}
 		}
@@ -271,7 +269,10 @@ public class MyGrammarParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class NameContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(MyGrammarParser.ID, 0); }
+		public List<TerminalNode> ID() { return getTokens(MyGrammarParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(MyGrammarParser.ID, i);
+		}
 		public NameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -294,54 +295,22 @@ public class MyGrammarParser extends Parser {
 	public final NameContext name() throws RecognitionException {
 		NameContext _localctx = new NameContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_name);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24);
+			setState(22);
 			match(ID);
+			setState(24);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==ID) {
+				{
+				setState(23);
+				match(ID);
+				}
 			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
 
-	@SuppressWarnings("CheckReturnValue")
-	public static class AgeContext extends ParserRuleContext {
-		public TerminalNode NUMBER() { return getToken(MyGrammarParser.NUMBER, 0); }
-		public AgeContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_age; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MyGrammarListener ) ((MyGrammarListener)listener).enterAge(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MyGrammarListener ) ((MyGrammarListener)listener).exitAge(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof MyGrammarVisitor ) return ((MyGrammarVisitor<? extends T>)visitor).visitAge(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final AgeContext age() throws RecognitionException {
-		AgeContext _localctx = new AgeContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_age);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(26);
-			match(NUMBER);
 			}
 		}
 		catch (RecognitionException re) {
@@ -356,24 +325,24 @@ public class MyGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0005\u001d\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
-		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004"+
-		"\u0001\u0000\u0001\u0000\u0004\u0000\r\b\u0000\u000b\u0000\f\u0000\u000e"+
-		"\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0002\u0001\u0002\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004"+
-		"\u0001\u0004\u0000\u0000\u0005\u0000\u0002\u0004\u0006\b\u0000\u0000\u0019"+
-		"\u0000\f\u0001\u0000\u0000\u0000\u0002\u0012\u0001\u0000\u0000\u0000\u0004"+
-		"\u0016\u0001\u0000\u0000\u0000\u0006\u0018\u0001\u0000\u0000\u0000\b\u001a"+
-		"\u0001\u0000\u0000\u0000\n\r\u0003\u0002\u0001\u0000\u000b\r\u0003\u0004"+
-		"\u0002\u0000\f\n\u0001\u0000\u0000\u0000\f\u000b\u0001\u0000\u0000\u0000"+
-		"\r\u000e\u0001\u0000\u0000\u0000\u000e\f\u0001\u0000\u0000\u0000\u000e"+
-		"\u000f\u0001\u0000\u0000\u0000\u000f\u0010\u0001\u0000\u0000\u0000\u0010"+
-		"\u0011\u0005\u0000\u0000\u0001\u0011\u0001\u0001\u0000\u0000\u0000\u0012"+
-		"\u0013\u0005\u0002\u0000\u0000\u0013\u0014\u0003\u0006\u0003\u0000\u0014"+
-		"\u0015\u0003\b\u0004\u0000\u0015\u0003\u0001\u0000\u0000\u0000\u0016\u0017"+
-		"\u0005\u0001\u0000\u0000\u0017\u0005\u0001\u0000\u0000\u0000\u0018\u0019"+
-		"\u0005\u0004\u0000\u0000\u0019\u0007\u0001\u0000\u0000\u0000\u001a\u001b"+
-		"\u0005\u0003\u0000\u0000\u001b\t\u0001\u0000\u0000\u0000\u0002\f\u000e";
+		"\u0004\u0001\u0007\u001b\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0001\u0000\u0001\u0000"+
+		"\u0004\u0000\u000b\b\u0000\u000b\u0000\f\u0000\f\u0001\u0000\u0001\u0000"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001\u0002"+
+		"\u0001\u0003\u0001\u0003\u0003\u0003\u0019\b\u0003\u0001\u0003\u0000\u0000"+
+		"\u0004\u0000\u0002\u0004\u0006\u0000\u0000\u0019\u0000\n\u0001\u0000\u0000"+
+		"\u0000\u0002\u0010\u0001\u0000\u0000\u0000\u0004\u0014\u0001\u0000\u0000"+
+		"\u0000\u0006\u0016\u0001\u0000\u0000\u0000\b\u000b\u0003\u0002\u0001\u0000"+
+		"\t\u000b\u0003\u0004\u0002\u0000\n\b\u0001\u0000\u0000\u0000\n\t\u0001"+
+		"\u0000\u0000\u0000\u000b\f\u0001\u0000\u0000\u0000\f\n\u0001\u0000\u0000"+
+		"\u0000\f\r\u0001\u0000\u0000\u0000\r\u000e\u0001\u0000\u0000\u0000\u000e"+
+		"\u000f\u0005\u0000\u0000\u0001\u000f\u0001\u0001\u0000\u0000\u0000\u0010"+
+		"\u0011\u0005\u0002\u0000\u0000\u0011\u0012\u0003\u0006\u0003\u0000\u0012"+
+		"\u0013\u0005\u0004\u0000\u0000\u0013\u0003\u0001\u0000\u0000\u0000\u0014"+
+		"\u0015\u0005\u0001\u0000\u0000\u0015\u0005\u0001\u0000\u0000\u0000\u0016"+
+		"\u0018\u0005\u0006\u0000\u0000\u0017\u0019\u0005\u0006\u0000\u0000\u0018"+
+		"\u0017\u0001\u0000\u0000\u0000\u0018\u0019\u0001\u0000\u0000\u0000\u0019"+
+		"\u0007\u0001\u0000\u0000\u0000\u0003\n\f\u0018";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

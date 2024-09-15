@@ -1,5 +1,5 @@
+// Generated from ./src/Arithmetic/Arithmetic.g4 by ANTLR 4.13.2
 package Arithmetic;
-// Generated from d:/Users/luc/Documents/GitHub/aut/src/Arithmetic/Arithmetic.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -11,11 +11,11 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface ArithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link ArithmeticParser#expr}.
+	 * Visit a parse tree produced by {@link ArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr(ArithmeticParser.ExprContext ctx);
+	T visitInfix_expr(ArithmeticParser.Infix_exprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ArithmeticParser#infix}.
 	 * @param ctx the parse tree

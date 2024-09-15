@@ -87,6 +87,22 @@ If you see the above output, then the installation was successful.
 [A first example for using antlr is provided in the guide used to install antlr4.](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md#a-first-example)
 
 ## Usage
+
+**To compile grammer to java:**
+```bash
+antlr4 <path to .g4 file> <params, just run antlr4 to see options>
+# For example:
+antlr4 .\src\Arithmetic\Arithmetic.g4 -visitor -listener -package Arithmetic -o .
+```
+
+**To visualize a tree:**
+```bash
+antlr4-parse <path to grammer> <starting rule to visualize> -gui <path to input txt, leave empty to have interactive input
+antlr4-parse .\src\Arithmetic\Arithmetic.g4 expr -gui .\src\Arithmetic\input.txt
+```
+
+
+### OLD
 Please install the [antlr4 vscode extention](https://marketplace.visualstudio.com/items?itemName=mike-lischke.vscode-antlr4) before continuing.
 
 1. Create a new grammar file, add some rules and save the file. This should let the extention generate the lexer and parser files for you. If this does not happen, you can run the following command in the terminal:
