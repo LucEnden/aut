@@ -61,7 +61,13 @@ class MyListener extends BooleanArithmeticBaseListener {
 	@Override public void exitUnary(BooleanArithmeticParser.UnaryContext ctx) { }
 
 	@Override public void enterOperator(BooleanArithmeticParser.OperatorContext ctx) { }
-	@Override public void exitOperator(BooleanArithmeticParser.OperatorContext ctx) { }
+	@Override public void exitOperator(BooleanArithmeticParser.OperatorContext ctx) {
+        // System.out.println("operator: " + ctx.getText());
+        infixComputeStack.push(new InfixComputeStackItem(
+            InfixComputeStackItemType.OPERATOR,
+            ctx.getText()
+        ));
+    }
 
     @Override public void enterOperand(BooleanArithmeticParser.OperandContext ctx) {
 
