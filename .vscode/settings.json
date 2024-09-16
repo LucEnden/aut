@@ -4,6 +4,8 @@
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "d:\\Users\\luc\\Documents\\GitHub\\aut\\lib\\antlr-4.13.2-complete.jar"
-    ]
+        "d:\\Users\\luc\\Documents\\GitHub\\aut\\lib\\antlr-4.13.2-complete.jar",
+        "antlr-4.13.2-complete.jar"
+    ],
+    "svg.preview.background": "white"
 }

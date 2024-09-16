@@ -1,7 +1,28 @@
 # AUT
 Automata repo for my minor semseter
 
-## Antlr4 Installation (Win10)
+## Installation
+
+### Short, automated Antlr4 Installation (Win10)
+
+[Follow this guide!](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md)
+
+#### Usage
+
+**To compile grammer to java manually:**
+```bash
+antlr4 <path to .g4 file> <params, just run antlr4 to see options>
+# For example:
+antlr4 .\src\Arithmetic\Arithmetic.g4 -visitor -listener -package Arithmetic -o .
+```
+
+**To visualize a tree:**
+```bash
+antlr4-parse <path to grammer> <starting rule to visualize> -gui <path to input txt, leave empty to have interactive input
+antlr4-parse .\src\Arithmetic\Arithmetic.g4 expr -gui .\src\Arithmetic\input.txt
+```
+
+### Long, manual Antlr4 Installation (Win10)
 
 Ive used [this guide](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md#windows) paired with [this video](https://www.youtube.com/watch?v=p2gIBPz69DM) to install antlr4 on my windows 10 machine.
 
@@ -86,20 +107,7 @@ If you see the above output, then the installation was successful.
 
 [A first example for using antlr is provided in the guide used to install antlr4.](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md#a-first-example)
 
-## Usage
 
-**To compile grammer to java:**
-```bash
-antlr4 <path to .g4 file> <params, just run antlr4 to see options>
-# For example:
-antlr4 .\src\Arithmetic\Arithmetic.g4 -visitor -listener -package Arithmetic -o .
-```
-
-**To visualize a tree:**
-```bash
-antlr4-parse <path to grammer> <starting rule to visualize> -gui <path to input txt, leave empty to have interactive input
-antlr4-parse .\src\Arithmetic\Arithmetic.g4 expr -gui .\src\Arithmetic\input.txt
-```
 
 
 ### OLD
