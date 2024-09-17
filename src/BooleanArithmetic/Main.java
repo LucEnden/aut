@@ -112,20 +112,20 @@ class MyListener extends BooleanArithmeticBaseListener {
 }
 
 class MyVisitor extends BooleanArithmeticBaseVisitor<String> {
-    @Override
-    public String visitOperand(BooleanArithmeticParser.OperandContext ctx) {
-        return ctx.getText();
-    }
+    // @Override
+    // public String visitOperand(BooleanArithmeticParser.OperandContext ctx) {
+    //     return ctx.getText();
+    // }
 
-    @Override
-    public String visitOperator(BooleanArithmeticParser.OperatorContext ctx) {
-        return ctx.getText();
-    }
+    // @Override
+    // public String visitOperator(BooleanArithmeticParser.OperatorContext ctx) {
+    //     return ctx.getText();
+    // }
 
-    @Override
-    public String visitUnary(BooleanArithmeticParser.UnaryContext ctx) {
-        return ctx.getText();
-    }
+    // @Override
+    // public String visitUnary(BooleanArithmeticParser.UnaryContext ctx) {
+    //     return ctx.getText();
+    // }
 
     @Override
     public String visitInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx) {
@@ -135,63 +135,63 @@ class MyVisitor extends BooleanArithmeticBaseVisitor<String> {
         String operand2 = "";
         String operator = "";
 
-        if (ctx.getChildCount() > 0) {
-            // A valid expresion children have either 1 or 3 children
-            if (ctx.getChildCount() == 1) {
-                // A single operand without any operators, this means we can just return the operand
-                // Examples are: 0, 1, 101, 1001, etc
-                result = ctx.getText();
-            } else if (ctx.getChildCount() == 2) {
-                // A unary operator with a single operand
-                // Examples are: ++0, --1, !101, etc
-                operator = visitUnary((BooleanArithmeticParser.UnaryContext) ctx.getChild(0));
-                operand1 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(1)); // Notice the recursion here
+        // if (ctx.getChildCount() > 0) {
+        //     // A valid expresion children have either 1 or 3 children
+        //     if (ctx.getChildCount() == 1) {
+        //         // A single operand without any operators, this means we can just return the operand
+        //         // Examples are: 0, 1, 101, 1001, etc
+        //         result = ctx.getText();
+        //     } else if (ctx.getChildCount() == 2) {
+        //         // A unary operator with a single operand
+        //         // Examples are: ++0, --1, !101, etc
+        //         operator = visitUnary((BooleanArithmeticParser.UnaryContext) ctx.getChild(0));
+        //         operand1 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(1)); // Notice the recursion here
                 
-                switch (operator) {
-                    case "++":
-                        result = BinaryOperations.addBinary(operand1, "1");
-                        break;
-                    case "--":
-                        result = BinaryOperations.subtractBinary(operand1, "1");
-                        break;
-                    case "!":
-                        result = BinaryOperations.notBinary(operand1);
-                        break;
-                    default:
-                        System.err.println("Unknown unary operator: " + operator);
-                        System.exit(1);
-                        break;
-                }
-            } else if (ctx.getChildCount() == 3) {
-                // A binary operator with two operands
-                // Examples are: 0+1, 1-0, 101*1001, etc
-                operand1 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(0)); // Notice the recursion here
-                operator = visitOperator((BooleanArithmeticParser.OperatorContext) ctx.getChild(1));
-                operand2 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(2)); // Notice the recursion here
+        //         switch (operator) {
+        //             case "++":
+        //                 result = BinaryOperations.addBinary(operand1, "1");
+        //                 break;
+        //             case "--":
+        //                 result = BinaryOperations.subtractBinary(operand1, "1");
+        //                 break;
+        //             case "!":
+        //                 result = BinaryOperations.notBinary(operand1);
+        //                 break;
+        //             default:
+        //                 System.err.println("Unknown unary operator: " + operator);
+        //                 System.exit(1);
+        //                 break;
+        //         }
+        //     } else if (ctx.getChildCount() == 3) {
+        //         // A binary operator with two operands
+        //         // Examples are: 0+1, 1-0, 101*1001, etc
+        //         operand1 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(0)); // Notice the recursion here
+        //         operator = visitOperator((BooleanArithmeticParser.OperatorContext) ctx.getChild(1));
+        //         operand2 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(2)); // Notice the recursion here
 
-                switch (operator) {
-                    case "+":
-                        result = BinaryOperations.addBinary(operand1, operand2);
-                        break;
-                    case "-":
-                        result = BinaryOperations.subtractBinary(operand1, operand2);
-                        break;
-                    case "*":
-                        result = BinaryOperations.multiplyBinary(operand1, operand2);
-                        break;
-                    case "/":
-                        result = BinaryOperations.divideBinary(operand1, operand2);
-                        break;
-                    case "%":
-                        result = BinaryOperations.moduloBinary(operand1, operand2);
-                        break;
-                    default:
-                        System.err.println("Unknown operator: " + operator);
-                        System.exit(1);
-                        break;
-                }
-            }
-        }
+        //         switch (operator) {
+        //             case "+":
+        //                 result = BinaryOperations.addBinary(operand1, operand2);
+        //                 break;
+        //             case "-":
+        //                 result = BinaryOperations.subtractBinary(operand1, operand2);
+        //                 break;
+        //             case "*":
+        //                 result = BinaryOperations.multiplyBinary(operand1, operand2);
+        //                 break;
+        //             case "/":
+        //                 result = BinaryOperations.divideBinary(operand1, operand2);
+        //                 break;
+        //             case "%":
+        //                 result = BinaryOperations.moduloBinary(operand1, operand2);
+        //                 break;
+        //             default:
+        //                 System.err.println("Unknown operator: " + operator);
+        //                 System.exit(1);
+        //                 break;
+        //         }
+        //     }
+        // }
         // An empty infix expression means we can just return an empty string
         return result;
     }

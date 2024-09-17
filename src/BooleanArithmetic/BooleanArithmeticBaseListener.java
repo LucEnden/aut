@@ -17,37 +17,97 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx) { }
+	@Override public void enterBracketinfix_expr(BooleanArithmeticParser.Bracketinfix_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx) { }
+	@Override public void exitBracketinfix_expr(BooleanArithmeticParser.Bracketinfix_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnary(BooleanArithmeticParser.UnaryContext ctx) { }
+	@Override public void enterAddSubinfix_expr(BooleanArithmeticParser.AddSubinfix_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnary(BooleanArithmeticParser.UnaryContext ctx) { }
+	@Override public void exitAddSubinfix_expr(BooleanArithmeticParser.AddSubinfix_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperator(BooleanArithmeticParser.OperatorContext ctx) { }
+	@Override public void enterBXorinfix_expr(BooleanArithmeticParser.BXorinfix_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperator(BooleanArithmeticParser.OperatorContext ctx) { }
+	@Override public void exitBXorinfix_expr(BooleanArithmeticParser.BXorinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMultDivinfix_expr(BooleanArithmeticParser.MultDivinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMultDivinfix_expr(BooleanArithmeticParser.MultDivinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBOrinfix_expr(BooleanArithmeticParser.BOrinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBOrinfix_expr(BooleanArithmeticParser.BOrinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUnaryinfix_expr(BooleanArithmeticParser.Unaryinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUnaryinfix_expr(BooleanArithmeticParser.Unaryinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShiftinfix_expr(BooleanArithmeticParser.Shiftinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShiftinfix_expr(BooleanArithmeticParser.Shiftinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBAndinfix_expr(BooleanArithmeticParser.BAndinfix_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBAndinfix_expr(BooleanArithmeticParser.BAndinfix_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

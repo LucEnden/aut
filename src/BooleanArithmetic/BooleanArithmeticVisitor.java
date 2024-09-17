@@ -11,25 +11,64 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface BooleanArithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link BooleanArithmeticParser#infix_expr}.
+	 * Visit a parse tree produced by the {@code bracketinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx);
+	T visitBracketinfix_expr(BooleanArithmeticParser.Bracketinfix_exprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link BooleanArithmeticParser#unary}.
+	 * Visit a parse tree produced by the {@code addSubinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnary(BooleanArithmeticParser.UnaryContext ctx);
+	T visitAddSubinfix_expr(BooleanArithmeticParser.AddSubinfix_exprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link BooleanArithmeticParser#operator}.
+	 * Visit a parse tree produced by the {@code bXorinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOperator(BooleanArithmeticParser.OperatorContext ctx);
+	T visitBXorinfix_expr(BooleanArithmeticParser.BXorinfix_exprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link BooleanArithmeticParser#operand}.
+	 * Visit a parse tree produced by the {@code multDivinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMultDivinfix_expr(BooleanArithmeticParser.MultDivinfix_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code bOrinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBOrinfix_expr(BooleanArithmeticParser.BOrinfix_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code unaryinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUnaryinfix_expr(BooleanArithmeticParser.Unaryinfix_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code shiftinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShiftinfix_expr(BooleanArithmeticParser.Shiftinfix_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code bAndinfix_expr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBAndinfix_expr(BooleanArithmeticParser.BAndinfix_exprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code operand}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
