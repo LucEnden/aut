@@ -12,13 +12,14 @@
 grammar BooleanArithmetic;
 
 // rules
+// inbracket   : OPENBRACKET infix_expr CLOSEBRACKET ;
+// infix_expr  : inbracket
+//             | unary infix_expr
+//             | infix_expr operator infix_expr
+//             | operand
+//             ;
 infix_expr  : OPENBRACKET infix_expr CLOSEBRACKET
             | unary infix_expr
-            | infix_expr operator infix_expr
-            | infix_expr operator infix_expr
-            | infix_expr operator infix_expr
-            | infix_expr operator infix_expr
-            | infix_expr operator infix_expr
             | infix_expr operator infix_expr
             | operand
             ;
@@ -54,8 +55,14 @@ operand     : BIT+ ;
 // 13.  Conditional operator (?:)
 // 14.  Assignment operators (=, +=, -=, etc.)
 // ============================================================
-
+// After some thought, it does not really make sense to support logical operations in arithmatic context
+// This could be cool as a seperate grammer, or even part of this grammer, but not for now.
+//
+// TODO: I just found out their are different types of bit shifts, that being: logical, arithmatical and rotational. I need a method of denoting these seperatly, as my current grammer implementations treats them all the same
+// ============================================================
+// Other usefull resources I found:
 // https://www.boolean-algebra.com/
+// ============================================================
 
 // Tokens
 OPENBRACKET     : '(' ;
@@ -103,9 +110,6 @@ WS              : [ \t\r\n] -> skip;
 // OPERATOR_sixthorder     : BAND{1} ;
 // OPERATOR_seventhorder   : BXOR{1} ;
 // OPERATOR_eighthorder    : BOR{1} ;
-
-// After some thought, it does not really make sense to support logical operations in arithmatic context
-// This could be cool as a seperate grammer, or even part of this grammer, but not for now.
 // fragment OPERATOR_sixthorder        : (LT | GT | LTE | GTE) ;
 // fragment OPERATOR_seventhorder      : (EQU{2} | NOT EQU) ;
 // fragment OPERATOR_eleventhorder     : AND{2} ;
