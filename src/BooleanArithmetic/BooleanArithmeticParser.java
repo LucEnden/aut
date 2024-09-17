@@ -18,7 +18,7 @@ public class BooleanArithmeticParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		OPENBRACKET=1, CLOSEBRACKET=2, NOT=3, MLT=4, DIV=5, MOD=6, ADD=7, SUB=8, 
-		LSHIFT=9, RSHIFT=10, BAND=11, BXOR=12, BOR=13, BIT=14, WS=15;
+		LSHIFT=9, RSHIFT=10, BAND=11, BXOR=12, BOR=13, BIT=14, WS=15, COMMENT=16;
 	public static final int
 		RULE_infix_expr = 0, RULE_unary = 1, RULE_operator = 2, RULE_operand = 3;
 	private static String[] makeRuleNames() {
@@ -38,7 +38,7 @@ public class BooleanArithmeticParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "OPENBRACKET", "CLOSEBRACKET", "NOT", "MLT", "DIV", "MOD", "ADD", 
-			"SUB", "LSHIFT", "RSHIFT", "BAND", "BXOR", "BOR", "BIT", "WS"
+			"SUB", "LSHIFT", "RSHIFT", "BAND", "BXOR", "BOR", "BIT", "WS", "COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -497,7 +497,7 @@ public class BooleanArithmeticParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u000f1\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\u00101\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0003\u0000\u0012\b\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+

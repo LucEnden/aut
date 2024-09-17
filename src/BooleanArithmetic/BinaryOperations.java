@@ -1,10 +1,9 @@
 package BooleanArithmetic;
 
-import org.stringtemplate.v4.ST;
-
 public class BinaryOperations {
     // Addition
     public static String addBinary(String binary1, String binary2) {
+        System.out.println(BinaryOperations.class.getName() + " addBinary() called with '" + binary1 + "' and '" + binary2 + "'");
         int num1 = Integer.parseInt(binary1, 2);
         int num2 = Integer.parseInt(binary2, 2);
         int sum = num1 + num2;
@@ -13,6 +12,7 @@ public class BinaryOperations {
 
     // Subtraction
     public static String subtractBinary(String binary1, String binary2) {
+        System.out.println(BinaryOperations.class.getName() + " subtractBinary() called with '" + binary1 + "' and '" + binary2 + "'");
         int num1 = Integer.parseInt(binary1, 2);
         int num2 = Integer.parseInt(binary2, 2);
         int difference = num1 - num2;
@@ -21,6 +21,7 @@ public class BinaryOperations {
 
     // Multiplication
     public static String multiplyBinary(String binary1, String binary2) {
+        System.out.println(BinaryOperations.class.getName() + " multiplyBinary() called with '" + binary1 + "' and '" + binary2 + "'");
         int num1 = Integer.parseInt(binary1, 2);
         int num2 = Integer.parseInt(binary2, 2);
         int product = num1 * num2;
@@ -29,6 +30,7 @@ public class BinaryOperations {
 
     // Division
     public static String divideBinary(String binary1, String binary2) {
+        System.out.println(BinaryOperations.class.getName() + " divideBinary() called with '" + binary1 + "' and '" + binary2 + "'");
         int num1 = Integer.parseInt(binary1, 2);
         int num2 = Integer.parseInt(binary2, 2);
         if (num2 == 0) {
@@ -40,6 +42,7 @@ public class BinaryOperations {
 
     // Modulo
     public static String moduloBinary(String binary1, String binary2) {
+        System.out.println(BinaryOperations.class.getName() + " moduloBinary() called with '" + binary1 + "' and '" + binary2 + "'");
         int num1 = Integer.parseInt(binary1, 2);
         int num2 = Integer.parseInt(binary2, 2);
         if (num2 == 0) {
@@ -49,7 +52,9 @@ public class BinaryOperations {
         return Integer.toBinaryString(remainder);
     }
 
+    // NOT
     public static String notBinary(String binary) {
+        System.out.println(BinaryOperations.class.getName() + " notBinary() called with '" + binary + "'");
         String result = "";
         for (int i = 0; i < binary.length(); i++) {
             result += binary.charAt(i) == '0' ? "1" : "0";

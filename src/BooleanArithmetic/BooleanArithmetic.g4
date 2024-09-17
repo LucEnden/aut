@@ -85,6 +85,7 @@ BOR             : '|' ;
 // EQU             : '=' ;
 BIT             : [01] ;
 WS              : [ \t\r\n] -> skip;
+COMMENT         : '#' ;
 
 // Operand
 // OPERAND : BITCONST ;// | REAL | INT ;
