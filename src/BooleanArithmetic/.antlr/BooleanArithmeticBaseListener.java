@@ -1,4 +1,4 @@
-// Generated from d:/Users/luc/repos/aut/src/BooleanArithmetic/BooleanArithmetic.g4 by ANTLR 4.13.1
+// Generated from d:/Users/luc/Documents/GitHub/aut/src/BooleanArithmetic/BooleanArithmetic.g4 by ANTLR 4.13.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -16,37 +16,85 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx) { }
+	@Override public void enterMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx) { }
+	@Override public void exitMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnary(BooleanArithmeticParser.UnaryContext ctx) { }
+	@Override public void enterBracketInfixExpr(BooleanArithmeticParser.BracketInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnary(BooleanArithmeticParser.UnaryContext ctx) { }
+	@Override public void exitBracketInfixExpr(BooleanArithmeticParser.BracketInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperator(BooleanArithmeticParser.OperatorContext ctx) { }
+	@Override public void enterBAndInfixExpr(BooleanArithmeticParser.BAndInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperator(BooleanArithmeticParser.OperatorContext ctx) { }
+	@Override public void exitBAndInfixExpr(BooleanArithmeticParser.BAndInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterShiftInfixExpr(BooleanArithmeticParser.ShiftInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShiftInfixExpr(BooleanArithmeticParser.ShiftInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -59,6 +107,18 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitOperand(BooleanArithmeticParser.OperandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

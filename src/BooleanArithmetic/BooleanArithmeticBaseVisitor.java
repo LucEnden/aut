@@ -18,56 +18,49 @@ public class BooleanArithmeticBaseVisitor<T> extends AbstractParseTreeVisitor<T>
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBracketinfix_expr(BooleanArithmeticParser.Bracketinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAddSubinfix_expr(BooleanArithmeticParser.AddSubinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBracketInfixExpr(BooleanArithmeticParser.BracketInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBXorinfix_expr(BooleanArithmeticParser.BXorinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBAndInfixExpr(BooleanArithmeticParser.BAndInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMultDivinfix_expr(BooleanArithmeticParser.MultDivinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBOrinfix_expr(BooleanArithmeticParser.BOrinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitUnaryinfix_expr(BooleanArithmeticParser.Unaryinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitShiftInfixExpr(BooleanArithmeticParser.ShiftInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitShiftinfix_expr(BooleanArithmeticParser.Shiftinfix_exprContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitBAndinfix_expr(BooleanArithmeticParser.BAndinfix_exprContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -75,4 +68,11 @@ public class BooleanArithmeticBaseVisitor<T> extends AbstractParseTreeVisitor<T>
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitOperand(BooleanArithmeticParser.OperandContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx) { return visitChildren(ctx); }
 }

@@ -8,101 +8,89 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface BooleanArithmeticListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by the {@code bracketinfix_expr}
+	 * Enter a parse tree produced by the {@code multDivInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBracketinfix_expr(BooleanArithmeticParser.Bracketinfix_exprContext ctx);
+	void enterMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code bracketinfix_expr}
+	 * Exit a parse tree produced by the {@code multDivInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBracketinfix_expr(BooleanArithmeticParser.Bracketinfix_exprContext ctx);
+	void exitMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code addSubinfix_expr}
+	 * Enter a parse tree produced by the {@code bracketInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterAddSubinfix_expr(BooleanArithmeticParser.AddSubinfix_exprContext ctx);
+	void enterBracketInfixExpr(BooleanArithmeticParser.BracketInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code addSubinfix_expr}
+	 * Exit a parse tree produced by the {@code bracketInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitAddSubinfix_expr(BooleanArithmeticParser.AddSubinfix_exprContext ctx);
+	void exitBracketInfixExpr(BooleanArithmeticParser.BracketInfixExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code bXorinfix_expr}
+	 * Enter a parse tree produced by the {@code bAndInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBXorinfix_expr(BooleanArithmeticParser.BXorinfix_exprContext ctx);
+	void enterBAndInfixExpr(BooleanArithmeticParser.BAndInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code bXorinfix_expr}
+	 * Exit a parse tree produced by the {@code bAndInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBXorinfix_expr(BooleanArithmeticParser.BXorinfix_exprContext ctx);
+	void exitBAndInfixExpr(BooleanArithmeticParser.BAndInfixExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code multDivinfix_expr}
+	 * Enter a parse tree produced by the {@code bOrInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterMultDivinfix_expr(BooleanArithmeticParser.MultDivinfix_exprContext ctx);
+	void enterBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code multDivinfix_expr}
+	 * Exit a parse tree produced by the {@code bOrInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitMultDivinfix_expr(BooleanArithmeticParser.MultDivinfix_exprContext ctx);
+	void exitBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code bOrinfix_expr}
+	 * Enter a parse tree produced by the {@code unaryInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBOrinfix_expr(BooleanArithmeticParser.BOrinfix_exprContext ctx);
+	void enterUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code bOrinfix_expr}
+	 * Exit a parse tree produced by the {@code unaryInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBOrinfix_expr(BooleanArithmeticParser.BOrinfix_exprContext ctx);
+	void exitUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code unaryinfix_expr}
+	 * Enter a parse tree produced by the {@code shiftInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnaryinfix_expr(BooleanArithmeticParser.Unaryinfix_exprContext ctx);
+	void enterShiftInfixExpr(BooleanArithmeticParser.ShiftInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code unaryinfix_expr}
+	 * Exit a parse tree produced by the {@code shiftInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnaryinfix_expr(BooleanArithmeticParser.Unaryinfix_exprContext ctx);
+	void exitShiftInfixExpr(BooleanArithmeticParser.ShiftInfixExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code shiftinfix_expr}
+	 * Enter a parse tree produced by the {@code bXorInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterShiftinfix_expr(BooleanArithmeticParser.Shiftinfix_exprContext ctx);
+	void enterBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code shiftinfix_expr}
+	 * Exit a parse tree produced by the {@code bXorInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitShiftinfix_expr(BooleanArithmeticParser.Shiftinfix_exprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code bAndinfix_expr}
-	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterBAndinfix_expr(BooleanArithmeticParser.BAndinfix_exprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code bAndinfix_expr}
-	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitBAndinfix_expr(BooleanArithmeticParser.BAndinfix_exprContext ctx);
+	void exitBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code operand}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
@@ -115,4 +103,16 @@ public interface BooleanArithmeticListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOperand(BooleanArithmeticParser.OperandContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code addSubInfixExpr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code addSubInfixExpr}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx);
 }

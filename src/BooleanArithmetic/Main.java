@@ -5,16 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.Pair;
 import org.antlr.v4.runtime.tree.*;
 
-// Side note: if this werent a toy example, I would have separated the classes into different files
-
-enum OperatorType {
-    UNARY,
-    OPERATOR
-}
-
+/*
 class MyListener extends BooleanArithmeticBaseListener {
     public Stack<String> operands = new Stack<String>();
     public Stack<Pair<OperatorType, String>> operators = new Stack<Pair<OperatorType, String>>();
@@ -110,91 +103,136 @@ class MyListener extends BooleanArithmeticBaseListener {
         }
     }
 }
+*/
 
 class MyVisitor extends BooleanArithmeticBaseVisitor<String> {
-    // @Override
-    // public String visitOperand(BooleanArithmeticParser.OperandContext ctx) {
-    //     return ctx.getText();
-    // }
-
-    // @Override
-    // public String visitOperator(BooleanArithmeticParser.OperatorContext ctx) {
-    //     return ctx.getText();
-    // }
-
-    // @Override
-    // public String visitUnary(BooleanArithmeticParser.UnaryContext ctx) {
-    //     return ctx.getText();
-    // }
+    //region Visitor overrides
+    @Override
+    public String visitBracketInfixExpr(BooleanArithmeticParser.BracketInfixExprContext ctx) {
+        // The middle child (aka index 1) is the expression inside the brackets
+        // The outer children are terminal nodes with text "(" and ")" respectively
+        // These terminal nodes can simply be ignored
+        return visit(ctx.getChild(1));
+    }
 
     @Override
-    public String visitInfix_expr(BooleanArithmeticParser.Infix_exprContext ctx) {
-        String result = "";
-
-        String operand1 = "";
-        String operand2 = "";
-        String operator = "";
-
-        // if (ctx.getChildCount() > 0) {
-        //     // A valid expresion children have either 1 or 3 children
-        //     if (ctx.getChildCount() == 1) {
-        //         // A single operand without any operators, this means we can just return the operand
-        //         // Examples are: 0, 1, 101, 1001, etc
-        //         result = ctx.getText();
-        //     } else if (ctx.getChildCount() == 2) {
-        //         // A unary operator with a single operand
-        //         // Examples are: ++0, --1, !101, etc
-        //         operator = visitUnary((BooleanArithmeticParser.UnaryContext) ctx.getChild(0));
-        //         operand1 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(1)); // Notice the recursion here
-                
-        //         switch (operator) {
-        //             case "++":
-        //                 result = BinaryOperations.addBinary(operand1, "1");
-        //                 break;
-        //             case "--":
-        //                 result = BinaryOperations.subtractBinary(operand1, "1");
-        //                 break;
-        //             case "!":
-        //                 result = BinaryOperations.notBinary(operand1);
-        //                 break;
-        //             default:
-        //                 System.err.println("Unknown unary operator: " + operator);
-        //                 System.exit(1);
-        //                 break;
-        //         }
-        //     } else if (ctx.getChildCount() == 3) {
-        //         // A binary operator with two operands
-        //         // Examples are: 0+1, 1-0, 101*1001, etc
-        //         operand1 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(0)); // Notice the recursion here
-        //         operator = visitOperator((BooleanArithmeticParser.OperatorContext) ctx.getChild(1));
-        //         operand2 = visitInfix_expr((BooleanArithmeticParser.Infix_exprContext) ctx.getChild(2)); // Notice the recursion here
-
-        //         switch (operator) {
-        //             case "+":
-        //                 result = BinaryOperations.addBinary(operand1, operand2);
-        //                 break;
-        //             case "-":
-        //                 result = BinaryOperations.subtractBinary(operand1, operand2);
-        //                 break;
-        //             case "*":
-        //                 result = BinaryOperations.multiplyBinary(operand1, operand2);
-        //                 break;
-        //             case "/":
-        //                 result = BinaryOperations.divideBinary(operand1, operand2);
-        //                 break;
-        //             case "%":
-        //                 result = BinaryOperations.moduloBinary(operand1, operand2);
-        //                 break;
-        //             default:
-        //                 System.err.println("Unknown operator: " + operator);
-        //                 System.exit(1);
-        //                 break;
-        //         }
-        //     }
-        // }
-        // An empty infix expression means we can just return an empty string
-        return result;
+    public String visitOperand(BooleanArithmeticParser.OperandContext ctx) {
+        return ctx.getText();
     }
+
+    @Override
+    public String visitUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx) {
+        return solveUnary(ctx);
+    }
+
+    @Override
+    public String visitMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx) {
+        return solveOperation(ctx);
+    }
+
+    @Override
+    public String visitAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx) {        
+        // for (int i = 0; i < ctx.getChildCount(); i++) {
+        //     System.out.println(i + " : " + ctx.getChild(i).getClass());
+        // }
+        // System.out.println(ctx.getChildCount());
+
+        String operand1 = visit(ctx.getChild(0));       // The first indexed child is always an operand. Notice the recursive call here
+        String operator = ctx.getChild(1).getText();    // The second child is a terminal node, i.e. the operator
+        String operand2 = visit(ctx.getChild(2));       // Same rule as with the first operand applies here
+
+        // System.out.println(operand1 + operator + operand2);
+
+        return performOperation(operand1, operator, operand2);
+    }
+
+    @Override
+    public String visitShiftInfixExpr(BooleanArithmeticParser.ShiftInfixExprContext ctx) {
+        return solveOperation(ctx);
+    }
+
+    @Override
+    public String visitBAndInfixExpr(BooleanArithmeticParser.BAndInfixExprContext ctx) {
+        return solveOperation(ctx);
+    }
+
+    @Override
+    public String visitBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx) {
+        return solveOperation(ctx);
+    }
+
+    @Override
+    public String visitBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx) {
+        return solveOperation(ctx);
+    }
+    //endregion
+
+    //region Helper methods
+    private String[] getUnary(BooleanArithmeticParser.Infix_exprContext ctx) {
+        String operator = ctx.getChild(0).getText();
+        String operand = visit(ctx.getChild(1));
+        return new String[] {operator, operand};
+    }
+    private String performUnary(String operator, String operand) {
+        switch (operator) {
+            case "++":
+                return BinaryOperations.addition(operand, "1");
+            case "--":
+                return BinaryOperations.subtraction(operand, "1");
+            case "!":
+                return BinaryOperations.bitwiseNot(operand);
+            default:
+                System.err.println("Unknown unary binary operator: " + operator);
+                System.exit(1);
+                return "";
+        }
+    }
+
+    private String solveUnary(BooleanArithmeticParser.Infix_exprContext ctx) {
+        String[] unary = getUnary(ctx);
+        return performUnary(unary[0], unary[1]);
+    }
+
+    private String[] getOperation(BooleanArithmeticParser.Infix_exprContext ctx) {
+        String operand1 = visit(ctx.getChild(0));
+        String operator = ctx.getChild(1).getText();
+        String operand2 = visit(ctx.getChild(2));
+        return new String[] {operand1, operator, operand2};
+    }
+    private String performOperation(String operand1, String operator, String operand2) {
+        switch (operator) {
+            case "+":
+                return BinaryOperations.addition(operand1, operand2);
+            case "-":
+                return BinaryOperations.subtraction(operand1, operand2);
+            case "*":
+                return BinaryOperations.multiplication(operand1, operand2);
+            case "/":
+                return BinaryOperations.division(operand1, operand2);
+            case "%":
+                return BinaryOperations.modulo(operand1, operand2);
+            case "<<":
+                return BinaryOperations.arithmeticLeftShift(operand1, operand2);
+            case ">>":
+                return BinaryOperations.arithmeticRightShift(operand1, operand2);
+            case "&":
+                return BinaryOperations.bitwiseAnd(operand1, operand2);
+            case "|":
+                return BinaryOperations.bitwiseOr(operand1, operand2);
+            case "^":
+                return BinaryOperations.bitwiseXor(operand1, operand2);
+            default:
+                System.err.println("Unknown binary operator: " + operator);
+                System.exit(1);
+                return "";
+        }
+    }
+
+    private String solveOperation(BooleanArithmeticParser.Infix_exprContext ctx) {
+        String[] operation = getOperation(ctx);
+        return performOperation(operation[0], operation[1], operation[2]);
+    }
+    //endregion
 }
 
 class Main {
@@ -226,6 +264,11 @@ class Main {
     public static String inputFile = System.getProperty("user.dir") + "\\src\\BooleanArithmetic\\input.txt";
 
     public static void main(String[] args) {
+        /*
+         * Uncomment the following line to enable logging of operations
+         */
+        // BinaryOperations.logOperations = true;
+
         // System.out.println("Homework stuff");
         // String homework = readFile(homeworkFile).get(0);
         // System.out.println(homework);
@@ -255,24 +298,18 @@ class Main {
         // break;
         // }
         // System.out.println("No more tests!");
-
-        // 
-        // List<String> input = readFile(inputFile);
-        // CharStream line;
-        // if (input.size() == 0) {
-        //     line = CharStreams.fromString("");
-        //     return;
-        // } else {
-        //     line = CharStreams.fromString(input.get(0));
-        // }
-        //                                        5   + 4   * 3  / 2  - 1 = 10 (1010 in binary)
-        CharStream line = CharStreams.fromString("101 + 100 * 11 / 10 - 1");
-        BooleanArithmeticLexer lexer = new BooleanArithmeticLexer(line);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        BooleanArithmeticParser parser = new BooleanArithmeticParser(tokens);
-        ParseTree tree = parser.infix_expr();
-
-        MyVisitor m = new MyVisitor();
-        System.out.println(m.visit(tree));
+        
+        List<String> input = readFile(testFile);
+        for (String i : input) {
+            System.out.print(i + " = ");
+            CharStream line = CharStreams.fromString(i);
+            BooleanArithmeticLexer lexer = new BooleanArithmeticLexer(line);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            BooleanArithmeticParser parser = new BooleanArithmeticParser(tokens);
+            ParseTree tree = parser.infix_expr();
+    
+            MyVisitor m = new MyVisitor();
+            System.out.println(m.visit(tree));
+        }
     }
 }

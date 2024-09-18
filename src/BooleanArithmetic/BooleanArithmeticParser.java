@@ -18,8 +18,8 @@ public class BooleanArithmeticParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		OPENBRACKET=1, CLOSEBRACKET=2, NOT=3, MLT=4, DIV=5, MOD=6, ADD=7, SUB=8, 
-		UADD=9, USUB=10, LSHIFT=11, RSHIFT=12, BAND=13, BXOR=14, BOR=15, OPERAND=16, 
-		WS=17;
+		UADD=9, USUB=10, LSHIFT=11, RSHIFT=12, BAND=13, BXOR=14, BOR=15, BINARY=16, 
+		WS=17, COMMENT=18;
 	public static final int
 		RULE_infix_expr = 0;
 	private static String[] makeRuleNames() {
@@ -39,8 +39,8 @@ public class BooleanArithmeticParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "OPENBRACKET", "CLOSEBRACKET", "NOT", "MLT", "DIV", "MOD", "ADD", 
-			"SUB", "UADD", "USUB", "LSHIFT", "RSHIFT", "BAND", "BXOR", "BOR", "OPERAND", 
-			"WS"
+			"SUB", "UADD", "USUB", "LSHIFT", "RSHIFT", "BAND", "BXOR", "BOR", "BINARY", 
+			"WS", "COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -107,78 +107,7 @@ public class BooleanArithmeticParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
-	public static class Bracketinfix_exprContext extends Infix_exprContext {
-		public TerminalNode OPENBRACKET() { return getToken(BooleanArithmeticParser.OPENBRACKET, 0); }
-		public Infix_exprContext infix_expr() {
-			return getRuleContext(Infix_exprContext.class,0);
-		}
-		public TerminalNode CLOSEBRACKET() { return getToken(BooleanArithmeticParser.CLOSEBRACKET, 0); }
-		public Bracketinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBracketinfix_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBracketinfix_expr(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBracketinfix_expr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class AddSubinfix_exprContext extends Infix_exprContext {
-		public List<Infix_exprContext> infix_expr() {
-			return getRuleContexts(Infix_exprContext.class);
-		}
-		public Infix_exprContext infix_expr(int i) {
-			return getRuleContext(Infix_exprContext.class,i);
-		}
-		public TerminalNode ADD() { return getToken(BooleanArithmeticParser.ADD, 0); }
-		public TerminalNode SUB() { return getToken(BooleanArithmeticParser.SUB, 0); }
-		public AddSubinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterAddSubinfix_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitAddSubinfix_expr(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitAddSubinfix_expr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class BXorinfix_exprContext extends Infix_exprContext {
-		public List<Infix_exprContext> infix_expr() {
-			return getRuleContexts(Infix_exprContext.class);
-		}
-		public Infix_exprContext infix_expr(int i) {
-			return getRuleContext(Infix_exprContext.class,i);
-		}
-		public TerminalNode BXOR() { return getToken(BooleanArithmeticParser.BXOR, 0); }
-		public BXorinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBXorinfix_expr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBXorinfix_expr(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBXorinfix_expr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class MultDivinfix_exprContext extends Infix_exprContext {
+	public static class MultDivInfixExprContext extends Infix_exprContext {
 		public List<Infix_exprContext> infix_expr() {
 			return getRuleContexts(Infix_exprContext.class);
 		}
@@ -188,23 +117,69 @@ public class BooleanArithmeticParser extends Parser {
 		public TerminalNode MLT() { return getToken(BooleanArithmeticParser.MLT, 0); }
 		public TerminalNode DIV() { return getToken(BooleanArithmeticParser.DIV, 0); }
 		public TerminalNode MOD() { return getToken(BooleanArithmeticParser.MOD, 0); }
-		public MultDivinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		public MultDivInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterMultDivinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterMultDivInfixExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitMultDivinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitMultDivInfixExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitMultDivinfix_expr(this);
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitMultDivInfixExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
-	public static class BOrinfix_exprContext extends Infix_exprContext {
+	public static class BracketInfixExprContext extends Infix_exprContext {
+		public TerminalNode OPENBRACKET() { return getToken(BooleanArithmeticParser.OPENBRACKET, 0); }
+		public Infix_exprContext infix_expr() {
+			return getRuleContext(Infix_exprContext.class,0);
+		}
+		public TerminalNode CLOSEBRACKET() { return getToken(BooleanArithmeticParser.CLOSEBRACKET, 0); }
+		public BracketInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBracketInfixExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBracketInfixExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBracketInfixExpr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class BAndInfixExprContext extends Infix_exprContext {
+		public List<Infix_exprContext> infix_expr() {
+			return getRuleContexts(Infix_exprContext.class);
+		}
+		public Infix_exprContext infix_expr(int i) {
+			return getRuleContext(Infix_exprContext.class,i);
+		}
+		public TerminalNode BAND() { return getToken(BooleanArithmeticParser.BAND, 0); }
+		public BAndInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBAndInfixExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBAndInfixExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBAndInfixExpr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class BOrInfixExprContext extends Infix_exprContext {
 		public List<Infix_exprContext> infix_expr() {
 			return getRuleContexts(Infix_exprContext.class);
 		}
@@ -212,46 +187,46 @@ public class BooleanArithmeticParser extends Parser {
 			return getRuleContext(Infix_exprContext.class,i);
 		}
 		public TerminalNode BOR() { return getToken(BooleanArithmeticParser.BOR, 0); }
-		public BOrinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		public BOrInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBOrinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBOrInfixExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBOrinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBOrInfixExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBOrinfix_expr(this);
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBOrInfixExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
-	public static class Unaryinfix_exprContext extends Infix_exprContext {
+	public static class UnaryInfixExprContext extends Infix_exprContext {
 		public Infix_exprContext infix_expr() {
 			return getRuleContext(Infix_exprContext.class,0);
 		}
 		public TerminalNode NOT() { return getToken(BooleanArithmeticParser.NOT, 0); }
 		public TerminalNode UADD() { return getToken(BooleanArithmeticParser.UADD, 0); }
 		public TerminalNode USUB() { return getToken(BooleanArithmeticParser.USUB, 0); }
-		public Unaryinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		public UnaryInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterUnaryinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterUnaryInfixExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitUnaryinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitUnaryInfixExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitUnaryinfix_expr(this);
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitUnaryInfixExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
-	public static class Shiftinfix_exprContext extends Infix_exprContext {
+	public static class ShiftInfixExprContext extends Infix_exprContext {
 		public List<Infix_exprContext> infix_expr() {
 			return getRuleContexts(Infix_exprContext.class);
 		}
@@ -260,48 +235,48 @@ public class BooleanArithmeticParser extends Parser {
 		}
 		public TerminalNode LSHIFT() { return getToken(BooleanArithmeticParser.LSHIFT, 0); }
 		public TerminalNode RSHIFT() { return getToken(BooleanArithmeticParser.RSHIFT, 0); }
-		public Shiftinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		public ShiftInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterShiftinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterShiftInfixExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitShiftinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitShiftInfixExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitShiftinfix_expr(this);
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitShiftInfixExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
-	public static class BAndinfix_exprContext extends Infix_exprContext {
+	public static class BXorInfixExprContext extends Infix_exprContext {
 		public List<Infix_exprContext> infix_expr() {
 			return getRuleContexts(Infix_exprContext.class);
 		}
 		public Infix_exprContext infix_expr(int i) {
 			return getRuleContext(Infix_exprContext.class,i);
 		}
-		public TerminalNode BAND() { return getToken(BooleanArithmeticParser.BAND, 0); }
-		public BAndinfix_exprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		public TerminalNode BXOR() { return getToken(BooleanArithmeticParser.BXOR, 0); }
+		public BXorInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBAndinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterBXorInfixExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBAndinfix_expr(this);
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitBXorInfixExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBAndinfix_expr(this);
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitBXorInfixExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class OperandContext extends Infix_exprContext {
-		public TerminalNode OPERAND() { return getToken(BooleanArithmeticParser.OPERAND, 0); }
+		public TerminalNode BINARY() { return getToken(BooleanArithmeticParser.BINARY, 0); }
 		public OperandContext(Infix_exprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -314,6 +289,31 @@ public class BooleanArithmeticParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitOperand(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class AddSubInfixExprContext extends Infix_exprContext {
+		public List<Infix_exprContext> infix_expr() {
+			return getRuleContexts(Infix_exprContext.class);
+		}
+		public Infix_exprContext infix_expr(int i) {
+			return getRuleContext(Infix_exprContext.class,i);
+		}
+		public TerminalNode ADD() { return getToken(BooleanArithmeticParser.ADD, 0); }
+		public TerminalNode SUB() { return getToken(BooleanArithmeticParser.SUB, 0); }
+		public AddSubInfixExprContext(Infix_exprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).enterAddSubInfixExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BooleanArithmeticListener ) ((BooleanArithmeticListener)listener).exitAddSubInfixExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof BooleanArithmeticVisitor ) return ((BooleanArithmeticVisitor<? extends T>)visitor).visitAddSubInfixExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -339,7 +339,7 @@ public class BooleanArithmeticParser extends Parser {
 			switch (_input.LA(1)) {
 			case OPENBRACKET:
 				{
-				_localctx = new Bracketinfix_exprContext(_localctx);
+				_localctx = new BracketInfixExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
@@ -355,7 +355,7 @@ public class BooleanArithmeticParser extends Parser {
 			case UADD:
 			case USUB:
 				{
-				_localctx = new Unaryinfix_exprContext(_localctx);
+				_localctx = new UnaryInfixExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(7);
@@ -372,13 +372,13 @@ public class BooleanArithmeticParser extends Parser {
 				infix_expr(8);
 				}
 				break;
-			case OPERAND:
+			case BINARY:
 				{
 				_localctx = new OperandContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(9);
-				match(OPERAND);
+				match(BINARY);
 				}
 				break;
 			default:
@@ -398,7 +398,7 @@ public class BooleanArithmeticParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 					case 1:
 						{
-						_localctx = new MultDivinfix_exprContext(new Infix_exprContext(_parentctx, _parentState));
+						_localctx = new MultDivInfixExprContext(new Infix_exprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_infix_expr);
 						setState(12);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
@@ -418,7 +418,7 @@ public class BooleanArithmeticParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new AddSubinfix_exprContext(new Infix_exprContext(_parentctx, _parentState));
+						_localctx = new AddSubInfixExprContext(new Infix_exprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_infix_expr);
 						setState(15);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
@@ -438,7 +438,7 @@ public class BooleanArithmeticParser extends Parser {
 						break;
 					case 3:
 						{
-						_localctx = new Shiftinfix_exprContext(new Infix_exprContext(_parentctx, _parentState));
+						_localctx = new ShiftInfixExprContext(new Infix_exprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_infix_expr);
 						setState(18);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
@@ -458,7 +458,7 @@ public class BooleanArithmeticParser extends Parser {
 						break;
 					case 4:
 						{
-						_localctx = new BAndinfix_exprContext(new Infix_exprContext(_parentctx, _parentState));
+						_localctx = new BAndInfixExprContext(new Infix_exprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_infix_expr);
 						setState(21);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
@@ -470,7 +470,7 @@ public class BooleanArithmeticParser extends Parser {
 						break;
 					case 5:
 						{
-						_localctx = new BXorinfix_exprContext(new Infix_exprContext(_parentctx, _parentState));
+						_localctx = new BXorInfixExprContext(new Infix_exprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_infix_expr);
 						setState(24);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
@@ -482,7 +482,7 @@ public class BooleanArithmeticParser extends Parser {
 						break;
 					case 6:
 						{
-						_localctx = new BOrinfix_exprContext(new Infix_exprContext(_parentctx, _parentState));
+						_localctx = new BOrInfixExprContext(new Infix_exprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_infix_expr);
 						setState(27);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
@@ -538,7 +538,7 @@ public class BooleanArithmeticParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0011$\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
+		"\u0004\u0001\u0012$\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0003"+
 		"\u0000\u000b\b\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
