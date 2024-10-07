@@ -1,0 +1,14 @@
+- Ideation
+    - Short description of your research
+    - Deliverables of your research
+- Research
+    - DOT framework (what, why, how)
+- Repeated feedback talks
+- Presentation
+- Delivery
+    - Research Q/A
+    - Choices made
+    - Conclusions
+    - Logical next steps
+    - Sources
+    - Of course, producitons (grammers, code, other media, etc.)

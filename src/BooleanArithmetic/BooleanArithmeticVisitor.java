@@ -11,6 +11,12 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface BooleanArithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link BooleanArithmeticParser#start}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStart(BooleanArithmeticParser.StartContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code multDivInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
@@ -39,12 +45,26 @@ public interface BooleanArithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBOrInfixExpr(BooleanArithmeticParser.BOrInfixExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code varInfixOperand}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarInfixOperand(BooleanArithmeticParser.VarInfixOperandContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code unaryInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code constInfixOperand}
+	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstInfixOperand(BooleanArithmeticParser.ConstInfixOperandContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code shiftInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
@@ -60,17 +80,52 @@ public interface BooleanArithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBXorInfixExpr(BooleanArithmeticParser.BXorInfixExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code operand}
-	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOperand(BooleanArithmeticParser.OperandContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code addSubInfixExpr}
 	 * labeled alternative in {@link BooleanArithmeticParser#infix_expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code varAssignmentUsingConst}
+	 * labeled alternative in {@link BooleanArithmeticParser#varassignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarAssignmentUsingConst(BooleanArithmeticParser.VarAssignmentUsingConstContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code varAssignmentUsingVar}
+	 * labeled alternative in {@link BooleanArithmeticParser#varassignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarAssignmentUsingVar(BooleanArithmeticParser.VarAssignmentUsingVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code varAssignmentUsingExpr}
+	 * labeled alternative in {@link BooleanArithmeticParser#varassignment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarAssignmentUsingExpr(BooleanArithmeticParser.VarAssignmentUsingExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code printUsingConst}
+	 * labeled alternative in {@link BooleanArithmeticParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintUsingConst(BooleanArithmeticParser.PrintUsingConstContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code printUsingVar}
+	 * labeled alternative in {@link BooleanArithmeticParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintUsingVar(BooleanArithmeticParser.PrintUsingVarContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code printUsingInfixExpr}
+	 * labeled alternative in {@link BooleanArithmeticParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintUsingInfixExpr(BooleanArithmeticParser.PrintUsingInfixExprContext ctx);
 }

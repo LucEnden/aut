@@ -12,32 +12,30 @@
 grammar BooleanArithmetic;
 
 // rules
-// infix_expr  : OPENBRACKET infix_expr CLOSEBRACKET
-//             | unary infix_expr
-//             | infix_expr operator infix_expr
-//             | operand
-//             ;
-// unary       : ( NOT | ADD ADD | SUB SUB ) ;
-// operator    : ( MLT | DIV | MOD )
-//             | ( ADD | SUB )
-//             | ( LSHIFT | RSHIFT)
-//             | BAND
-//             | BXOR
-//             | BOR
-//             ;
-// operand     : BIT+ ;
+start           : (infix_expr | varassignment | print)+ ;
 
-// rules
-infix_expr  : OPENBRACKET infix_expr CLOSEBRACKET #bracketInfixExpr
-            | ( NOT | UADD | USUB ) infix_expr #unaryInfixExpr
-            | infix_expr ( MLT | DIV | MOD ) infix_expr #multDivInfixExpr
-            | infix_expr ( ADD | SUB ) infix_expr #addSubInfixExpr
-            | infix_expr ( LSHIFT | RSHIFT) infix_expr #shiftInfixExpr
-            | infix_expr BAND infix_expr #bAndInfixExpr
-            | infix_expr BXOR infix_expr #bXorInfixExpr
-            | infix_expr BOR infix_expr #bOrInfixExpr
-            | BINARY #operand
-            ;
+// function_signature  : 'def' WS VARNAME OPENBRACKET (VARNAME)* CLOSEBRACKET function_body ;
+// function_body       : statement+ ;
+
+infix_expr      : OPENBRACKET infix_expr CLOSEBRACKET #bracketInfixExpr
+                | ( NOT | UADD | USUB ) infix_expr #unaryInfixExpr
+                | infix_expr ( MLT | DIV | MOD ) infix_expr #multDivInfixExpr
+                | infix_expr ( ADD | SUB ) infix_expr #addSubInfixExpr
+                | infix_expr ( LSHIFT | RSHIFT) infix_expr #shiftInfixExpr
+                | infix_expr BAND infix_expr #bAndInfixExpr
+                | infix_expr BXOR infix_expr #bXorInfixExpr
+                | infix_expr BOR infix_expr #bOrInfixExpr
+                | BINARY  #constInfixOperand
+                | VARNAME  #varInfixOperand
+                ;
+varassignment   : VARNAME ASSIGNMENT BINARY #varAssignmentUsingConst
+                | VARNAME ASSIGNMENT VARNAME #varAssignmentUsingVar
+                | VARNAME ASSIGNMENT infix_expr #varAssignmentUsingExpr
+                ;
+print           : PRINTCMD BINARY #printUsingConst
+                | PRINTCMD VARNAME #printUsingVar
+                | PRINTCMD infix_expr #printUsingInfixExpr
+                ;
 
 // ============================================================
 // I asked perplexity what the where in the order of operations left and right shifts fall.
@@ -87,9 +85,12 @@ BAND                    : '&' ;
 BXOR                    : '^' ;
 BOR                     : '|' ;
 BINARY                  : [01]+ ;
-WS                      : SPACING -> skip;
-COMMENT                 : OPENCOMMENT .* CLOSECOMMENT -> skip;
+WS                      : SPACING -> skip ;
+
+ASSIGNMENT              : '=' ;
+PRINTCMD                : 'print' ;
+
+VARNAME                 : (ALPHA | '_')+ ;
+ALPHA                   : [a-zA-Z] ;
 
 fragment SPACING        : [ \t\r\n] ;
-fragment OPENCOMMENT    : '/*'  ;
-fragment CLOSECOMMENT   : '*/' ;

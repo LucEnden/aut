@@ -1,0 +1,6 @@
+a = 0101
+b = a + 0101
+c = b
+print a
+print b
+print c

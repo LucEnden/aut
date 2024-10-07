@@ -1,0 +1,1 @@
+print lOnG_vArNaMe + 01010

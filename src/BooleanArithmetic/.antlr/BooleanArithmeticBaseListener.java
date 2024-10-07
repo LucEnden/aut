@@ -16,6 +16,18 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterStart(BooleanArithmeticParser.StartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStart(BooleanArithmeticParser.StartContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMultDivInfixExpr(BooleanArithmeticParser.MultDivInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -64,6 +76,18 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVarInfixOperand(BooleanArithmeticParser.VarInfixOperandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarInfixOperand(BooleanArithmeticParser.VarInfixOperandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -71,6 +95,18 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUnaryInfixExpr(BooleanArithmeticParser.UnaryInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstInfixOperand(BooleanArithmeticParser.ConstInfixOperandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstInfixOperand(BooleanArithmeticParser.ConstInfixOperandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -100,18 +136,6 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperand(BooleanArithmeticParser.OperandContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOperand(BooleanArithmeticParser.OperandContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -119,6 +143,78 @@ public class BooleanArithmeticBaseListener implements BooleanArithmeticListener 
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAddSubInfixExpr(BooleanArithmeticParser.AddSubInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarAssignmentUsingConst(BooleanArithmeticParser.VarAssignmentUsingConstContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarAssignmentUsingConst(BooleanArithmeticParser.VarAssignmentUsingConstContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarAssignmentUsingVar(BooleanArithmeticParser.VarAssignmentUsingVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarAssignmentUsingVar(BooleanArithmeticParser.VarAssignmentUsingVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarAssignmentUsingExpr(BooleanArithmeticParser.VarAssignmentUsingExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarAssignmentUsingExpr(BooleanArithmeticParser.VarAssignmentUsingExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrintUsingConst(BooleanArithmeticParser.PrintUsingConstContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrintUsingConst(BooleanArithmeticParser.PrintUsingConstContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrintUsingVar(BooleanArithmeticParser.PrintUsingVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrintUsingVar(BooleanArithmeticParser.PrintUsingVarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPrintUsingInfixExpr(BooleanArithmeticParser.PrintUsingInfixExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPrintUsingInfixExpr(BooleanArithmeticParser.PrintUsingInfixExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
